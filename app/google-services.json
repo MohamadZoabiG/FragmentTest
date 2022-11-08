@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "331551422753",
+    "project_id": "fragmenttest-e00e5",
+    "storage_bucket": "fragmenttest-e00e5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:331551422753:android:7be7e4a64419b38fe4e660",
+        "android_client_info": {
+          "package_name": "com.example.fragmenttest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "331551422753-mlvgd5aanu405s1faqvqm4vcq828cahu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKzjDdZZRAAT1M6mxKp0efSJrB9gI0qFk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "331551422753-mlvgd5aanu405s1faqvqm4vcq828cahu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
