@@ -77,8 +77,9 @@ public class BlankFragment2 extends Fragment
 
     @Override
     public void onStart() {
-        connect();
         super.onStart();
+        connect();
+
     }
 
     private void connect() {

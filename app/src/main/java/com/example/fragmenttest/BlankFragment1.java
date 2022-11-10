@@ -3,13 +3,16 @@ package com.example.fragmenttest;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -70,8 +73,9 @@ public class BlankFragment1 extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_blank1, container, false);
     }
-
+    private FrameLayout Layout;
     private Button btnLogin;
+    private Button btnforgot;
     private EditText emailLogin;
     private EditText passLogin;
 
@@ -79,8 +83,9 @@ public class BlankFragment1 extends Fragment {
 
     @Override
     public void onStart() {
-        connect();
         super.onStart();
+        connect();
+
     }
 
     private void connect() {
@@ -97,6 +102,7 @@ public class BlankFragment1 extends Fragment {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
 
+
                                 } else {
 
                                 }
@@ -105,7 +111,17 @@ public class BlankFragment1 extends Fragment {
 
             }
 
+
         });
+        btnforgot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.FrameLayout,new ForgotPassword());
+                ft.commit();
+            }
+        });
+
     }
 
 
