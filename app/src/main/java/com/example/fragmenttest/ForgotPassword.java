@@ -3,10 +3,14 @@ package com.example.fragmenttest;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.FrameLayout;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -61,4 +65,38 @@ public class ForgotPassword extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_forgot_password, container, false);
     }
+    private FrameLayout Layout;
+    private EditText email;
+    private EditText newpass;
+    private EditText confirmnewpass;
+    private Button login;
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        connect();
+
+    }
+
+    private void connect() {
+        email=getView().findViewById(R.id.etemailfrag3);
+        newpass=getView().findViewById(R.id.etnewPasswordfrag3);
+        confirmnewpass=getView().findViewById(R.id.etnewPasswordfrag3);
+        login=getView().findViewById(R.id.btnloginfrag3);
+
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.FrameLayout,new BlankFragment1());
+                ft.commit();
+            }
+        });
+
+
+    }
+
+
 }

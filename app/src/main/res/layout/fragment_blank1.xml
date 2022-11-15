@@ -10,54 +10,46 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <FrameLayout
-            android:id="@+id/FrameLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-        </FrameLayout>
-
-        <Button
-            android:id="@+id/btnLogin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="58dp"
-            android:layout_marginTop="97dp"
-            android:text="Login"
-            app:layout_constraintStart_toStartOf="@+id/etPasswordLogin"
-            app:layout_constraintTop_toBottomOf="@+id/etPasswordLogin" />
-
         <EditText
-            android:id="@+id/etEmailLogin"
+            android:id="@+id/etEmailLoginfrag1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="192dp"
+            android:layout_marginStart="92dp"
+            android:layout_marginTop="164dp"
             android:ems="10"
-            android:hint="Enter Email"
+            android:hint="Enter email"
             android:inputType="textEmailAddress"
-            app:layout_constraintEnd_toEndOf="@+id/etPasswordLogin"
-            app:layout_constraintStart_toStartOf="@+id/etPasswordLogin"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/etPasswordLogin"
+            android:id="@+id/etPasswordLoginfrag1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="89dp"
-            android:layout_marginTop="89dp"
+            android:layout_marginTop="41dp"
             android:ems="10"
-            android:hint="Enter Password"
-            android:inputType="textPassword"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etEmailLogin" />
+            android:hint="Enter password"
+            android:inputType="numberPassword"
+            app:layout_constraintStart_toStartOf="@+id/etEmailLoginfrag1"
+            app:layout_constraintTop_toBottomOf="@+id/etEmailLoginfrag1" />
 
         <Button
-            android:id="@+id/btnforgot"
-            android:layout_width="133dp"
-            android:layout_height="41dp"
-            android:onClick="Frag3"
+            android:id="@+id/btnLoginFrag1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="48dp"
+            android:layout_marginBottom="38dp"
+            android:text="Login"
+            app:layout_constraintBottom_toTopOf="@+id/btnforgotfrag1"
+            app:layout_constraintStart_toStartOf="@+id/btnforgotfrag1" />
+
+        <Button
+            android:id="@+id/btnforgotfrag1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="133dp"
             android:text="Forgot password"
-            tools:layout_editor_absoluteX="126dp"
-            tools:layout_editor_absoluteY="583dp" />
+            app:layout_constraintEnd_toEndOf="@+id/etPasswordLoginfrag1"
+            app:layout_constraintTop_toBottomOf="@+id/etPasswordLoginfrag1" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

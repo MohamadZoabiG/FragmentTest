@@ -3,7 +3,6 @@ package com.example.fragmenttest;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -89,9 +88,10 @@ public class BlankFragment1 extends Fragment {
     }
 
     private void connect() {
-        btnLogin=getView().findViewById(R.id.btnLogin);
-        emailLogin=getView().findViewById(R.id.etEmailLogin);
-        passLogin=getView().findViewById(R.id.etPasswordLogin);
+        btnLogin=getView().findViewById(R.id.btnLoginFrag1);
+        btnforgot=getView().findViewById(R.id.btnforgotfrag1);
+        emailLogin=getView().findViewById(R.id.etEmailLoginfrag1);
+        passLogin=getView().findViewById(R.id.etPasswordLoginfrag1);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -116,6 +116,7 @@ public class BlankFragment1 extends Fragment {
         btnforgot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
                 ft.replace(R.id.FrameLayout,new ForgotPassword());
                 ft.commit();

@@ -5,15 +5,20 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -90,14 +95,49 @@ public class BlankFragment2 extends Fragment
             @Override
             public void onClick(View view) {
                 String mail = emailSingup.getText().toString(), pass = passSignup.getText().toString();
-                fbs.getAuth().signInWithEmailAndPassword(mail, pass)
+                if(mail.trim().isEmpty()) {
+                    Toast.makeText(getActivity(), "Email is required!", Toast.LENGTH_SHORT).show();
+                }
+                if(pass.trim().isEmpty()) {
+                    Toast.makeText(getActivity(), "Password is required!", Toast.LENGTH_SHORT).show();
+                }
+                if(!Patterns.EMAIL_ADDRESS.matcher(mail).matches())
+                {
+                    Toast.makeText(getActivity(), "Please Provide Valid email!", Toast.LENGTH_SHORT).show();
+
+                }
+                if(pass.length()<6)
+                {
+                    Toast.makeText(getActivity(), "Min password length should be 6 characters!", Toast.LENGTH_SHORT).show();
+
+                }
+                fbs.getAuth().createUserWithEmailAndPassword(mail,pass)
                         .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
+                                    User user = new User(mail,pass);
+                                    FirebaseDatabase.getInstance().getReference("Users")
+                                            .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user)
+                                            .addOnCompleteListener(new OnCompleteListener<Void>()
+                                            {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
 
-                                } else {
+                                                    if(task.isSuccessful())
+                                                    {
+                                                        Toast.makeText(getActivity(), "User has been registered successfully!", Toast.LENGTH_SHORT).show();
+                                                    }
+                                                    else
+                                                    {
+                                                        Toast.makeText(getActivity(), "Failed to register! Try again!", Toast.LENGTH_SHORT).show();
+                                                    }
 
+                                                }
+                                            });
+                                } else
+                                {
+                                    Toast.makeText(getActivity(), "Failed to register! Try again!", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
