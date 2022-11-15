@@ -142,5 +142,5 @@ public class BlankFragment2 extends Fragment
                             }
                         });
             }});
-        }
     }
+}
