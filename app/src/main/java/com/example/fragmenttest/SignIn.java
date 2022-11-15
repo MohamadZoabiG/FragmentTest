@@ -12,17 +12,19 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link BlankFragment1#newInstance} factory method to
+ * Use the {@link SignIn#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class BlankFragment1 extends Fragment {
+public class SignIn extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -32,7 +34,7 @@ public class BlankFragment1 extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public BlankFragment1() {
+    public SignIn() {
         // Required empty public constructor
     }
 
@@ -45,8 +47,8 @@ public class BlankFragment1 extends Fragment {
      * @return A new instance of fragment BlankFragment1.
      */
     // TODO: Rename and change types and number of parameters
-    public static BlankFragment1 newInstance(String param1, String param2) {
-        BlankFragment1 fragment = new BlankFragment1();
+    public static SignIn newInstance(String param1, String param2) {
+        SignIn fragment = new SignIn();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -63,14 +65,14 @@ public class BlankFragment1 extends Fragment {
         }
 
     }
-    private FirebaseServices fbs;
+    private FirebaseAuth fbs;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_blank1, container, false);
+        return inflater.inflate(R.layout.signin, container, false);
     }
     private FrameLayout Layout;
     private Button btnLogin;
@@ -88,6 +90,8 @@ public class BlankFragment1 extends Fragment {
     }
 
     private void connect() {
+        fbs=FirebaseAuth.getInstance();
+
         btnLogin=getView().findViewById(R.id.btnLoginFrag1);
         btnforgot=getView().findViewById(R.id.btnforgotfrag1);
         emailLogin=getView().findViewById(R.id.etEmailLoginfrag1);
@@ -96,14 +100,16 @@ public class BlankFragment1 extends Fragment {
             @Override
             public void onClick(View view) {
                 String mail=emailLogin.getText().toString(),pass=passLogin.getText().toString();
-                fbs.getAuth().signInWithEmailAndPassword(mail, pass)
+                fbs.signInWithEmailAndPassword(mail, pass)
                         .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-
+                                    Toast.makeText( getActivity(),"Task is success!", Toast.LENGTH_SHORT).show();
 
                                 } else {
+                                    Toast.makeText( getActivity(),"Task is failure!", Toast.LENGTH_SHORT).show();
+
 
                                 }
                             }
@@ -118,7 +124,7 @@ public class BlankFragment1 extends Fragment {
             public void onClick(View view) {
 
                 FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                ft.replace(R.id.FrameLayout,new ForgotPassword());
+                ft.replace(R.id.FrameLayout,new ForgotPass());
                 ft.commit();
             }
         });

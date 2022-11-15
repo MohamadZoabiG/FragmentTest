@@ -5,7 +5,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,14 +17,15 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link BlankFragment2#newInstance} factory method to
+ * Use the {@link SignUp#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class BlankFragment2 extends Fragment
+public class SignUp extends Fragment
 {
 
     // TODO: Rename parameter arguments, choose names that match
@@ -38,7 +38,7 @@ public class BlankFragment2 extends Fragment
     private String mParam2;
 
 
-    public BlankFragment2() {
+    public SignUp() {
         // Required empty public constructor
     }
 
@@ -51,8 +51,8 @@ public class BlankFragment2 extends Fragment
      * @return A new instance of fragment BlankFragment2.
      */
     // TODO: Rename and change types and number of parameters
-    public static BlankFragment2 newInstance(String param1, String param2) {
-        BlankFragment2 fragment = new BlankFragment2();
+    public static SignUp newInstance(String param1, String param2) {
+        SignUp fragment = new SignUp();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -73,21 +73,25 @@ public class BlankFragment2 extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_blank2, container, false);
+        return inflater.inflate(R.layout.signup, container, false);
     }
     private Button btnSignup;
     private EditText emailSingup;
     private EditText passSignup;
-    private FirebaseServices fbs;
+    private FirebaseAuth mAuth;
+
+
 
     @Override
     public void onStart() {
+
         super.onStart();
         connect();
 
     }
 
     private void connect() {
+        mAuth=FirebaseAuth.getInstance();
         btnSignup = getView().findViewById(R.id.btnSignup);
         emailSingup = getView().findViewById(R.id.etEmailSingup);
         passSignup = getView().findViewById(R.id.etPasswordSignup);
@@ -111,36 +115,38 @@ public class BlankFragment2 extends Fragment
                     Toast.makeText(getActivity(), "Min password length should be 6 characters!", Toast.LENGTH_SHORT).show();
 
                 }
-                fbs.getAuth().createUserWithEmailAndPassword(mail,pass)
-                        .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    User user = new User(mail,pass);
-                                    FirebaseDatabase.getInstance().getReference("Users")
-                                            .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user)
-                                            .addOnCompleteListener(new OnCompleteListener<Void>()
+                mAuth.createUserWithEmailAndPassword(mail,pass).addOnCompleteListener( new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful())
+                        {
+                            User user = new User(mail,pass);
+                            FirebaseDatabase.getInstance().getReference("Users")
+                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user)
+                                    .addOnCompleteListener(new OnCompleteListener<Void>()
+                                    {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+
+                                            if(task.isSuccessful())
                                             {
-                                                @Override
-                                                public void onComplete(@NonNull Task<Void> task) {
+                                                Toast.makeText(getActivity(), "User has been registered successfully!", Toast.LENGTH_SHORT).show();
+                                            }
+                                            else
+                                            {
+                                                Toast.makeText(getActivity(), "Failed to register! Try again!", Toast.LENGTH_SHORT).show();
+                                            }
 
-                                                    if(task.isSuccessful())
-                                                    {
-                                                        Toast.makeText(getActivity(), "User has been registered successfully!", Toast.LENGTH_SHORT).show();
-                                                    }
-                                                    else
-                                                    {
-                                                        Toast.makeText(getActivity(), "Failed to register! Try again!", Toast.LENGTH_SHORT).show();
-                                                    }
+                                        }
+                                    });
+                        } else
+                        {
+                            Toast.makeText(getActivity(), "Failed to register! Try again! 222", Toast.LENGTH_SHORT).show();
+                        }
 
-                                                }
-                                            });
-                                } else
-                                {
-                                    Toast.makeText(getActivity(), "Failed to register! Try again!", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
+                    }
+                });
+
             }});
     }
 }

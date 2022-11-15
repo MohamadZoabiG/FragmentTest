@@ -14,10 +14,10 @@ import android.widget.FrameLayout;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link ForgotPassword#newInstance} factory method to
+ * Use the {@link ForgotPass#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ForgotPassword extends Fragment {
+public class ForgotPass extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -28,7 +28,7 @@ public class ForgotPassword extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public ForgotPassword() {
+    public ForgotPass() {
         // Required empty public constructor
     }
 
@@ -41,8 +41,8 @@ public class ForgotPassword extends Fragment {
      * @return A new instance of fragment ForgotPassword.
      */
     // TODO: Rename and change types and number of parameters
-    public static ForgotPassword newInstance(String param1, String param2) {
-        ForgotPassword fragment = new ForgotPassword();
+    public static ForgotPass newInstance(String param1, String param2) {
+        ForgotPass fragment = new ForgotPass();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -63,7 +63,7 @@ public class ForgotPassword extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_forgot_password, container, false);
+        return inflater.inflate(R.layout.forgotpass, container, false);
     }
     private FrameLayout Layout;
     private EditText email;
@@ -90,7 +90,7 @@ public class ForgotPassword extends Fragment {
             public void onClick(View view) {
 
                 FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                ft.replace(R.id.FrameLayout,new BlankFragment1());
+                ft.replace(R.id.FrameLayout,new SignIn());
                 ft.commit();
             }
         });

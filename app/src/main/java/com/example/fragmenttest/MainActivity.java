@@ -1,7 +1,6 @@
 package com.example.fragmenttest;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
@@ -31,13 +30,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void Frag1(View view) {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.FrameLayout,new BlankFragment1());
+        ft.replace(R.id.FrameLayout,new SignIn());
         ft.commit();
     }
 
     public void Frag2(View view) {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.FrameLayout,new BlankFragment2());
+        ft.replace(R.id.FrameLayout,new SignUp());
         ft.commit();
     }
 }
