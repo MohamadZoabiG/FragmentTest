@@ -100,7 +100,7 @@ public class SignUp extends Fragment
             public void onClick(View view) {
                 String mail = emailSingup.getText().toString(), pass = passSignup.getText().toString();
                 if(mail.trim().isEmpty()) {
-                    Toast.makeText(getActivity(), "Email is required!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Email is required!!", Toast.LENGTH_SHORT).show();
                 }
                 if(pass.trim().isEmpty()) {
                     Toast.makeText(getActivity(), "Password is required!", Toast.LENGTH_SHORT).show();
