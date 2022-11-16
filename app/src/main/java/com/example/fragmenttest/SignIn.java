@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -65,7 +67,6 @@ public class SignIn extends Fragment {
         }
 
     }
-    private FirebaseAuth fbs;
 
 
     @Override
@@ -79,6 +80,9 @@ public class SignIn extends Fragment {
     private Button btnforgot;
     private EditText emailLogin;
     private EditText passLogin;
+    private FirebaseAuth mAuth;
+    private FragmentTransaction ft;
+
 
 
 
@@ -90,8 +94,7 @@ public class SignIn extends Fragment {
     }
 
     private void connect() {
-        fbs=FirebaseAuth.getInstance();
-
+        mAuth=FirebaseAuth.getInstance();
         btnLogin=getView().findViewById(R.id.btnLoginFrag1);
         btnforgot=getView().findViewById(R.id.btnforgotfrag1);
         emailLogin=getView().findViewById(R.id.etEmailLoginfrag1);
@@ -100,16 +103,37 @@ public class SignIn extends Fragment {
             @Override
             public void onClick(View view) {
                 String mail=emailLogin.getText().toString(),pass=passLogin.getText().toString();
-                fbs.signInWithEmailAndPassword(mail, pass)
-                        .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
+                if(mail.trim().isEmpty()) {
+                    Toast.makeText(getActivity(), "Email is required!!", Toast.LENGTH_SHORT).show();
+                }
+                if(pass.trim().isEmpty()) {
+                    Toast.makeText(getActivity(), "Password is required!", Toast.LENGTH_SHORT).show();
+                }
+                if(!Patterns.EMAIL_ADDRESS.matcher(mail).matches())
+                {
+                    Toast.makeText(getActivity(), "Please Provide Valid email!", Toast.LENGTH_SHORT).show();
+
+                }
+                if(pass.length()<6)
+                {
+                    Toast.makeText(getActivity(), "Min password length should be 6 characters!", Toast.LENGTH_SHORT).show();
+
+                }
+                mAuth.signInWithEmailAndPassword(mail, pass)
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    Toast.makeText( getActivity(),"Task is success!", Toast.LENGTH_SHORT).show();
+                                if (task.isSuccessful())
+                                {
+                                        Toast.makeText( getActivity(),"Login successful!", Toast.LENGTH_SHORT).show();
+                                        ft = getActivity().getSupportFragmentManager().beginTransaction();
+                                        ft.replace(R.id.FrameLayout,new FirstPage());
+                                        ft.commit();
 
-                                } else {
-                                    Toast.makeText( getActivity(),"Task is failure!", Toast.LENGTH_SHORT).show();
-
+                                }
+                                else
+                                {
+                                    Toast.makeText( getActivity(),"Failed to Login!", Toast.LENGTH_SHORT).show();
 
                                 }
                             }
@@ -123,7 +147,7 @@ public class SignIn extends Fragment {
             @Override
             public void onClick(View view) {
 
-                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                 ft = getActivity().getSupportFragmentManager().beginTransaction();
                 ft.replace(R.id.FrameLayout,new ForgotPass());
                 ft.commit();
             }

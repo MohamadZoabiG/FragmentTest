@@ -2,15 +2,22 @@ package com.example.fragmenttest;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -68,8 +75,10 @@ public class ForgotPass extends Fragment {
     private FrameLayout Layout;
     private EditText email;
     private EditText newpass;
-    private EditText confirmnewpass;
     private Button login;
+    private FirebaseAuth auth;
+    private FragmentTransaction ft;
+
 
 
     @Override
@@ -80,22 +89,45 @@ public class ForgotPass extends Fragment {
     }
 
     private void connect() {
+        auth=FirebaseAuth.getInstance();
         email=getView().findViewById(R.id.etemailfrag3);
-        newpass=getView().findViewById(R.id.etnewPasswordfrag3);
-        confirmnewpass=getView().findViewById(R.id.etnewPasswordfrag3);
         login=getView().findViewById(R.id.btnloginfrag3);
-
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                resetpassword();
 
-                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                ft.replace(R.id.FrameLayout,new SignIn());
-                ft.commit();
+
             }
         });
 
 
+    }
+
+    private void resetpassword() {
+        String mail = email.getText().toString();
+        if(mail.trim().isEmpty()) {
+            Toast.makeText(getActivity(), "Email is required!!", Toast.LENGTH_SHORT).show();
+        }
+        if(!Patterns.EMAIL_ADDRESS.matcher(mail).matches())
+        {
+            Toast.makeText(getActivity(), "Please Provide Valid email!", Toast.LENGTH_SHORT).show();
+
+        }
+        auth.sendPasswordResetEmail(mail).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    Toast.makeText(getActivity(), "Check your email to reset password!", Toast.LENGTH_SHORT).show();
+                    ft = getActivity().getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.FrameLayout,new SignIn());  
+                    ft.commit();
+                }
+                else Toast.makeText(getActivity(), "Something wrong happened! , Try again!", Toast.LENGTH_SHORT).show();
+
+
+            }
+        });
     }
 
 
