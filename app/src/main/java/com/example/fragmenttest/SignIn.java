@@ -76,6 +76,7 @@ public class SignIn extends Fragment {
         return inflater.inflate(R.layout.signin, container, false);
     }
     private FrameLayout Layout;
+    private Button register;
     private Button btnLogin;
     private Button btnforgot;
     private EditText emailLogin;
@@ -95,6 +96,7 @@ public class SignIn extends Fragment {
 
     private void connect() {
         mAuth=FirebaseAuth.getInstance();
+        register=getView().findViewById(R.id.btnSignupfrag1);
         btnLogin=getView().findViewById(R.id.btnLoginFrag1);
         btnforgot=getView().findViewById(R.id.btnforgotfrag1);
         emailLogin=getView().findViewById(R.id.etEmailLoginfrag1);
@@ -105,19 +107,19 @@ public class SignIn extends Fragment {
                 String mail=emailLogin.getText().toString(),pass=passLogin.getText().toString();
                 if(mail.trim().isEmpty()) {
                     Toast.makeText(getActivity(), "Email is required!!", Toast.LENGTH_SHORT).show();
+                    return;
                 }
-                if(pass.trim().isEmpty()) {
+                else if(pass.trim().isEmpty()) {
                     Toast.makeText(getActivity(), "Password is required!", Toast.LENGTH_SHORT).show();
+                    return;
                 }
-                if(!Patterns.EMAIL_ADDRESS.matcher(mail).matches())
+                else if(!Patterns.EMAIL_ADDRESS.matcher(mail).matches())
                 {
                     Toast.makeText(getActivity(), "Please Provide Valid email!", Toast.LENGTH_SHORT).show();
-
                 }
-                if(pass.length()<6)
+                else if(pass.length()<6)
                 {
                     Toast.makeText(getActivity(), "Min password length should be 6 characters!", Toast.LENGTH_SHORT).show();
-
                 }
                 mAuth.signInWithEmailAndPassword(mail, pass)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -152,6 +154,14 @@ public class SignIn extends Fragment {
                 ft.commit();
             }
         });
+        register.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ft = getActivity().getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.FrameLayout,new SignUp());
+                ft.commit();
+            }
+        }));
 
     }
 

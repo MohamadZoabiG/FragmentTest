@@ -17,26 +17,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        connect();
+        gotoLoginFragment();
 
     }
 
-    private void connect() {
-    Fragment1=findViewById(R.id.btnFrag1);
-    Fragment2=findViewById(R.id.btnFrag2);
-    Layout=findViewById(R.id.FrameLayout);
-    }
-
-    public void Frag1(View view) {
+    public void gotoLoginFragment()
+    {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayout,new SignIn());
         ft.commit();
     }
 
-    public void Frag2(View view) {
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.FrameLayout,new SignUp());
-        ft.commit();
-    }
 }

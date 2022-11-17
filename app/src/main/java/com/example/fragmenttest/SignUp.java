@@ -101,9 +101,11 @@ public class SignUp extends Fragment
                 String mail = emailSingup.getText().toString(), pass = passSignup.getText().toString();
                 if(mail.trim().isEmpty()) {
                     Toast.makeText(getActivity(), "Email is required!!", Toast.LENGTH_SHORT).show();
+                    return;
                 }
                 if(pass.trim().isEmpty()) {
                     Toast.makeText(getActivity(), "Password is required!", Toast.LENGTH_SHORT).show();
+                    return;
                 }
                 if(!Patterns.EMAIL_ADDRESS.matcher(mail).matches())
                 {
@@ -141,7 +143,8 @@ public class SignUp extends Fragment
                                     });
                         } else
                         {
-                            Toast.makeText(getActivity(), "Failed to register! Try again! 222", Toast.LENGTH_SHORT).show();
+
+                            Toast.makeText(getActivity(), "Failed to register!" + task.getException().toString(), Toast.LENGTH_SHORT).show();
                         }
 
                     }
