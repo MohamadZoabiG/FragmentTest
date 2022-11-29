@@ -3,11 +3,14 @@ package com.example.fragmenttest;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -62,7 +65,21 @@ public class FirstPage extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_first_page, container, false);
     }
-    private EditText welcome;
+
+
+    private EditText txt2;
+    private EditText txt1;
+    private EditText txt3;
+    private ImageView img1;
+    private ImageView img2;
+    private ImageView img3;
+    private Button btn1;
+    private Button btn2;
+    private Button btn3;
+    private FragmentTransaction ft;
+
+
+
     @Override
     public void onStart() {
         super.onStart();
@@ -71,7 +88,42 @@ public class FirstPage extends Fragment {
     }
 
     private void connect() {
-        welcome = getView().findViewById(R.id.welcometext);
+
+        txt1 = getView().findViewById(R.id.txt1);
+        txt2 = getView().findViewById(R.id.txt2);
+        txt3 = getView().findViewById(R.id.txt3);
+        img1=getView().findViewById(R.id. mgpc);
+        img2=getView().findViewById(R.id. mgmath);
+        img3=getView().findViewById(R.id. mgphysics);
+        btn1=getView().findViewById(R.id.buttonpc2);
+        btn2=getView().findViewById(R.id.buttonmath);
+        btn3=getView().findViewById(R.id.buttonphysics);
+
+        btn1.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ft = getActivity().getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.FrameLayout,new SelectLevel());
+                ft.commit();
+            }
+        }));
+        btn2.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ft = getActivity().getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.FrameLayout,new SelectLevel());
+                ft.commit();
+            }
+        }));
+        btn3.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ft = getActivity().getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.FrameLayout,new SelectLevel());
+                ft.commit();
+            }
+        }));
+
     }
 
 }

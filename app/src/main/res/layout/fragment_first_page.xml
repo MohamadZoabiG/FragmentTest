@@ -10,18 +10,84 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/welcometext"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="    Select Your Subject"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.096" />
+        <TextView
+            android:id="@+id/txt2"
+            android:layout_width="379dp"
+            android:layout_height="23dp"
+            android:fontFamily="@font/nunito_semibold"
+            android:text="Find a course you want to learn"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="112dp" />
+
+        <TextView
+            android:id="@+id/txt1"
+            android:layout_width="132dp"
+            android:layout_height="23dp"
+            android:fontFamily="@font/archivo_black"
+            android:text="TextView"
+            android:textColor="#0D1333"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="85dp"
+            tools:text="Hello there," />
+
+        <TextView
+            android:id="@+id/txt3"
+            android:layout_width="127dp"
+            android:layout_height="27dp"
+            android:text="Categories"
+            android:textColor="#0D1333"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="186dp" />
+
+        <ImageView
+            android:id="@+id/mgpc"
+            android:layout_width="101dp"
+            android:layout_height="74dp"
+            android:src="@drawable/computers"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="261dp" />
+
+        <ImageView
+            android:id="@+id/mgmath"
+            android:layout_width="100dp"
+            android:layout_height="78dp"
+            android:src="@drawable/math"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="370dp" />
+
+        <ImageView
+            android:id="@+id/mgphysics"
+            android:layout_width="101dp"
+            android:layout_height="81dp"
+            android:src="@drawable/physics"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="510dp" />
+
+        <Button
+            android:id="@+id/buttonpc2"
+            android:layout_width="221dp"
+            android:layout_height="41dp"
+            android:text="Computer Science"
+            tools:layout_editor_absoluteX="148dp"
+            tools:layout_editor_absoluteY="275dp" />
+
+        <Button
+            android:id="@+id/buttonmath"
+            android:layout_width="123dp"
+            android:layout_height="38dp"
+            android:text="math"
+            tools:layout_editor_absoluteX="150dp"
+            tools:layout_editor_absoluteY="389dp" />
+
+        <Button
+            android:id="@+id/buttonphysics"
+            android:layout_width="126dp"
+            android:layout_height="37dp"
+            android:text="physics"
+            tools:layout_editor_absoluteX="153dp"
+            tools:layout_editor_absoluteY="533dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
