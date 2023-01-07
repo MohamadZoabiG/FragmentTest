@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FragmentAddCourse">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/etTitile"
+            android:layout_width="233dp"
+            android:layout_height="42dp"
+            android:ems="10"
+            android:hint="Title..."
+            android:inputType="textPersonName"
+            tools:layout_editor_absoluteX="89dp"
+            tools:layout_editor_absoluteY="111dp" />
+
+        <EditText
+            android:id="@+id/etDate"
+            android:layout_width="235dp"
+            android:layout_height="42dp"
+            android:ems="10"
+            android:hint="Date..."
+            android:inputType="textPersonName"
+            tools:layout_editor_absoluteX="88dp"
+            tools:layout_editor_absoluteY="201dp" />
+
+        <EditText
+            android:id="@+id/etProducer"
+            android:layout_width="238dp"
+            android:layout_height="42dp"
+            android:ems="10"
+            android:hint="Producer..."
+            android:inputType="textPersonName"
+            tools:layout_editor_absoluteX="87dp"
+            tools:layout_editor_absoluteY="292dp" />
+
+        <Button
+            android:id="@+id/btnAddCourse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enter Course info"
+            tools:layout_editor_absoluteX="112dp"
+            tools:layout_editor_absoluteY="483dp" />
+
+        <EditText
+            android:id="@+id/etLength"
+            android:layout_width="234dp"
+            android:layout_height="43dp"
+            android:ems="10"
+            android:hint="Length..."
+            android:inputType="textPersonName"
+            tools:layout_editor_absoluteX="89dp"
+            tools:layout_editor_absoluteY="385dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

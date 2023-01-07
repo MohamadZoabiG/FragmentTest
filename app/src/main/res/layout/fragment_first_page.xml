@@ -14,7 +14,7 @@
             android:id="@+id/txt2"
             android:layout_width="379dp"
             android:layout_height="23dp"
-            android:fontFamily="@font/nunito_semibold"
+            android:fontFamily="@font/archivo_black"
             android:text="Find a course you want to learn"
             android:textSize="20sp"
             tools:layout_editor_absoluteX="16dp"
@@ -68,15 +68,15 @@
 
         <Button
             android:id="@+id/buttonpc2"
-            android:layout_width="221dp"
-            android:layout_height="41dp"
+            android:layout_width="220dp"
+            android:layout_height="36dp"
             android:text="Computer Science"
-            tools:layout_editor_absoluteX="148dp"
+            tools:layout_editor_absoluteX="149dp"
             tools:layout_editor_absoluteY="275dp" />
 
         <Button
             android:id="@+id/buttonmath"
-            android:layout_width="123dp"
+            android:layout_width="224dp"
             android:layout_height="38dp"
             android:text="math"
             tools:layout_editor_absoluteX="150dp"
@@ -84,10 +84,10 @@
 
         <Button
             android:id="@+id/buttonphysics"
-            android:layout_width="126dp"
-            android:layout_height="37dp"
+            android:layout_width="213dp"
+            android:layout_height="38dp"
             android:text="physics"
             tools:layout_editor_absoluteX="153dp"
-            tools:layout_editor_absoluteY="533dp" />
+            tools:layout_editor_absoluteY="532dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
