@@ -81,8 +81,8 @@ public class SignIn extends Fragment {
     private Button btnforgot;
     private EditText emailLogin;
     private EditText passLogin;
+    private FragmentTransaction ft ;
     private FirebaseAuth mAuth;
-    private FragmentTransaction ft;
 
 
 
@@ -128,7 +128,7 @@ public class SignIn extends Fragment {
                                 if (task.isSuccessful())
                                 {
                                         Toast.makeText( getActivity(),"Login successful!", Toast.LENGTH_SHORT).show();
-                                        ft = getActivity().getSupportFragmentManager().beginTransaction();
+                                         ft = getActivity().getSupportFragmentManager().beginTransaction();
                                         ft.replace(R.id.FrameLayout,new FirstPage());
                                         ft.commit();
 

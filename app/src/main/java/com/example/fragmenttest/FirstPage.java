@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -67,9 +68,9 @@ public class FirstPage extends Fragment {
     }
 
 
-    private EditText txt2;
-    private EditText txt1;
-    private EditText txt3;
+    private TextView txt2;
+    private TextView txt1;
+    private TextView txt3;
     private ImageView img1;
     private ImageView img2;
     private ImageView img3;
@@ -92,10 +93,10 @@ public class FirstPage extends Fragment {
         txt1 = getView().findViewById(R.id.txt1);
         txt2 = getView().findViewById(R.id.txt2);
         txt3 = getView().findViewById(R.id.txt3);
-        img1=getView().findViewById(R.id. mgpc);
-        img2=getView().findViewById(R.id. mgmath);
-        img3=getView().findViewById(R.id. mgphysics);
-        btn1=getView().findViewById(R.id.buttonpc2);
+        img1=getView().findViewById(R.id. imgpc);
+        img2=getView().findViewById(R.id. imgmath);
+        img3=getView().findViewById(R.id. imgphysics);
+        btn1=getView().findViewById(R.id.buttonpc);
         btn2=getView().findViewById(R.id.buttonmath);
         btn3=getView().findViewById(R.id.buttonphysics);
 
