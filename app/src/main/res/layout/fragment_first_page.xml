@@ -12,82 +12,126 @@
 
         <TextView
             android:id="@+id/txt2"
-            android:layout_width="379dp"
-            android:layout_height="23dp"
+            android:layout_width="381dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="112dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="140dp"
             android:fontFamily="@font/archivo_black"
             android:text="Find a course you want to learn"
             android:textSize="20sp"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="112dp" />
+            app:layout_constraintBottom_toTopOf="@+id/buttonpc2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/txt1"
-            android:layout_width="132dp"
-            android:layout_height="23dp"
+            android:layout_width="166dp"
+            android:layout_height="27dp"
+            android:layout_marginTop="85dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginBottom="4dp"
             android:fontFamily="@font/archivo_black"
             android:text="TextView"
             android:textColor="#0D1333"
             android:textSize="20sp"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="85dp"
+            app:layout_constraintBottom_toTopOf="@+id/txt2"
+            app:layout_constraintEnd_toStartOf="@+id/buttonpc2"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/txt2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.777"
             tools:text="Hello there," />
 
         <TextView
             android:id="@+id/txt3"
             android:layout_width="127dp"
-            android:layout_height="27dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="48dp"
             android:text="Categories"
             android:textColor="#0D1333"
             android:textSize="20sp"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="186dp" />
+            app:layout_constraintBottom_toTopOf="@+id/mgpc"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt2" />
 
         <ImageView
             android:id="@+id/mgpc"
-            android:layout_width="101dp"
-            android:layout_height="74dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="35dp"
             android:src="@drawable/computers"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="261dp" />
+            app:layout_constraintBottom_toTopOf="@+id/mgmath"
+            app:layout_constraintEnd_toStartOf="@+id/buttonpc2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt3" />
 
         <ImageView
             android:id="@+id/mgmath"
-            android:layout_width="100dp"
-            android:layout_height="78dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="34dp"
+            android:layout_marginBottom="62dp"
             android:src="@drawable/math"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="370dp" />
+            app:layout_constraintBottom_toTopOf="@+id/mgphysics"
+            app:layout_constraintEnd_toStartOf="@+id/buttonmath"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mgpc" />
 
         <ImageView
             android:id="@+id/mgphysics"
-            android:layout_width="101dp"
-            android:layout_height="81dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="36dp"
+            android:layout_marginBottom="140dp"
             android:src="@drawable/physics"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="510dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/buttonphysics"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mgmath" />
 
         <Button
             android:id="@+id/buttonpc2"
-            android:layout_width="220dp"
-            android:layout_height="36dp"
+            android:layout_width="188dp"
+            android:layout_height="47dp"
+            android:layout_marginEnd="42dp"
+            android:layout_marginBottom="78dp"
             android:text="Computer Science"
-            tools:layout_editor_absoluteX="149dp"
-            tools:layout_editor_absoluteY="275dp" />
+            app:layout_constraintBottom_toTopOf="@+id/buttonmath"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/mgpc"
+            app:layout_constraintTop_toBottomOf="@+id/txt2" />
 
         <Button
             android:id="@+id/buttonmath"
-            android:layout_width="224dp"
-            android:layout_height="38dp"
+            android:layout_width="177dp"
+            android:layout_height="47dp"
+            android:layout_marginEnd="37dp"
+            android:layout_marginBottom="105dp"
             android:text="math"
-            tools:layout_editor_absoluteX="150dp"
-            tools:layout_editor_absoluteY="389dp" />
+            app:layout_constraintBottom_toTopOf="@+id/buttonphysics"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/mgmath"
+            app:layout_constraintTop_toBottomOf="@+id/buttonpc2" />
 
         <Button
             android:id="@+id/buttonphysics"
-            android:layout_width="213dp"
-            android:layout_height="38dp"
+            android:layout_width="166dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="45dp"
+            android:layout_marginBottom="161dp"
             android:text="physics"
-            tools:layout_editor_absoluteX="153dp"
-            tools:layout_editor_absoluteY="532dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/mgphysics"
+            app:layout_constraintTop_toBottomOf="@+id/buttonmath" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

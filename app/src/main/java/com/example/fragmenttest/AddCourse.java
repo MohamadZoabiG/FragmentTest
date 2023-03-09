@@ -7,7 +7,6 @@ public class AddCourse {
     private  String length;
 
     public AddCourse() {
-
     }
 
     public AddCourse(String title, String date, String producer, String length) {
@@ -55,7 +54,7 @@ public class AddCourse {
                 "title='" + title + '\'' +
                 ", date='" + date + '\'' +
                 ", producer='" + producer + '\'' +
-                ", length=" + length +
+                ", length='" + length + '\'' +
                 '}';
     }
 }

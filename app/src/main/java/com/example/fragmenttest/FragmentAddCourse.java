@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -75,7 +76,7 @@ public class FragmentAddCourse extends Fragment {
     }
     private EditText Title , Producer , Length ,Date;
     private FirebaseServices fbs;
-    private Button btn;
+    private Button btnadd;
 
     @Override
     public void onStart() {
@@ -85,11 +86,11 @@ public class FragmentAddCourse extends Fragment {
 
     private void addcourse() {
         fbs=new FirebaseServices().getInstance();
-        Title=getView().findViewById(R.id.etTitile);
+        Title=getView().findViewById(R.id.etTitle);
         Date=getView().findViewById(R.id.etDate);
         Producer=getView().findViewById(R.id.etProducer);
         Length=getView().findViewById(R.id.etLength);
-        btn.setOnClickListener(new View.OnClickListener() {
+        btnadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 
@@ -107,22 +108,20 @@ public class FragmentAddCourse extends Fragment {
         producer=Producer.getText().toString();
         length=Length.getText().toString();
 
-        if(title.trim().isEmpty() || producer.trim().isEmpty() || length.trim().isEmpty() || date.trim().isEmpty())
+        if(title.trim().isEmpty() || date.trim().isEmpty() || producer.trim().isEmpty() || length.trim().isEmpty())
         {
             Toast.makeText(getActivity(), "some data is missing", Toast.LENGTH_SHORT).show();
             return;
         }
         AddCourse addcourse = new AddCourse(title,date,producer,length);
 
-        fbs.getFire().collection("books").document("LA")
+        fbs.getFire().collection("course").document("LA")
                 .set(addcourse)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Log.d(TAG, "DocumentSnapshot successfully written!");
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
+                .addOnSuccessListener(new Onsuccess)
+
+
+
+                  .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Log.w(TAG, "Error writing document", e);

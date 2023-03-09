@@ -68,8 +68,8 @@ public class FirstPage extends Fragment {
     }
 
 
-    private TextView txt2;
     private TextView txt1;
+    private TextView txt2;
     private TextView txt3;
     private ImageView img1;
     private ImageView img2;
@@ -93,10 +93,10 @@ public class FirstPage extends Fragment {
         txt1 = getView().findViewById(R.id.txt1);
         txt2 = getView().findViewById(R.id.txt2);
         txt3 = getView().findViewById(R.id.txt3);
-        img1=getView().findViewById(R.id. imgpc);
-        img2=getView().findViewById(R.id. imgmath);
-        img3=getView().findViewById(R.id. imgphysics);
-        btn1=getView().findViewById(R.id.buttonpc);
+        img1=getView().findViewById(R.id.mgpc);
+        img2=getView().findViewById(R.id. mgmath);
+        img3=getView().findViewById(R.id. mgphysics);
+        btn1=getView().findViewById(R.id.buttonpc2);
         btn2=getView().findViewById(R.id.buttonmath);
         btn3=getView().findViewById(R.id.buttonphysics);
 
