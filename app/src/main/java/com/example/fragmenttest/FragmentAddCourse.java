@@ -32,7 +32,6 @@ public class FragmentAddCourse extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
 
-
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -74,7 +73,8 @@ public class FragmentAddCourse extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_add_course, container, false);
     }
-    private EditText Title , Producer , Length ,Date;
+
+    private EditText Title, Producer, Length, Date;
     private FirebaseServices fbs;
     private Button btnadd;
 
@@ -85,15 +85,16 @@ public class FragmentAddCourse extends Fragment {
     }
 
     private void addcourse() {
-        fbs=new FirebaseServices().getInstance();
-        Title=getView().findViewById(R.id.etTitle);
-        Date=getView().findViewById(R.id.etDate);
-        Producer=getView().findViewById(R.id.etProducer);
-        Length=getView().findViewById(R.id.etLength);
+        fbs = new FirebaseServices().getInstance();
+        Title = getView().findViewById(R.id.etTitle);
+        Date = getView().findViewById(R.id.etDate);
+        Producer = getView().findViewById(R.id.etProducer);
+        Length = getView().findViewById(R.id.etLength);
+        btnadd=getView().findViewById((R.id.btnAddCourse));
         btnadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                
+
                 addtofirestore();
             }
         });
@@ -101,32 +102,40 @@ public class FragmentAddCourse extends Fragment {
     }
 
     private void addtofirestore() {
-        String title , producer , length ,date;
+        String title, producer, length, date;
 
-        title=Title.getText().toString();
-        date=Date.getText().toString();
-        producer=Producer.getText().toString();
-        length=Length.getText().toString();
+        title = Title.getText().toString();
+        date = Date.getText().toString();
+        producer = Producer.getText().toString();
+        length = Length.getText().toString();
 
-        if(title.trim().isEmpty() || date.trim().isEmpty() || producer.trim().isEmpty() || length.trim().isEmpty())
-        {
+        if (title.trim().isEmpty() || date.trim().isEmpty() || producer.trim().isEmpty() || length.trim().isEmpty()) {
             Toast.makeText(getActivity(), "some data is missing", Toast.LENGTH_SHORT).show();
             return;
+        } else {
+            AddCourse addcourse = new AddCourse(title, date, producer, length);
+            {
+                fbs.getFire().collection("Courses_").add(addcourse).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                            @Override
+                            public void onSuccess(DocumentReference documentReference) {
+                                Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                                Toast.makeText(getActivity(), "Success!", Toast.LENGTH_SHORT).show();
+                                return;
+
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.e(TAG, "Error adding document", e);
+                                Toast.makeText(getActivity(), "Failure!", Toast.LENGTH_SHORT).show();
+                                return;
+
+                            }
+                        });
+
+
+            }
         }
-        AddCourse addcourse = new AddCourse(title,date,producer,length);
-
-        fbs.getFire().collection("course").document("LA")
-                .set(addcourse)
-                .addOnSuccessListener(new Onsuccess)
-
-
-
-                  .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error writing document", e);
-                    }
-                });
-
     }
 }

@@ -13,50 +13,66 @@
         <EditText
             android:id="@+id/etTitle"
             android:layout_width="233dp"
-            android:layout_height="42dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="111dp"
+            android:layout_marginBottom="54dp"
             android:ems="10"
             android:hint="Title..."
             android:inputType="textPersonName"
-            tools:layout_editor_absoluteX="89dp"
-            tools:layout_editor_absoluteY="111dp" />
-
-        <EditText
-            android:id="@+id/etDate"
-            android:layout_width="235dp"
-            android:layout_height="42dp"
-            android:ems="10"
-            android:hint="Date..."
-            android:inputType="textPersonName"
-            tools:layout_editor_absoluteX="88dp"
-            tools:layout_editor_absoluteY="201dp" />
+            app:layout_constraintBottom_toTopOf="@+id/etDate"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/etProducer"
             android:layout_width="238dp"
-            android:layout_height="42dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="51dp"
             android:ems="10"
             android:hint="Producer..."
             android:inputType="textPersonName"
-            tools:layout_editor_absoluteX="87dp"
-            tools:layout_editor_absoluteY="292dp" />
+            app:layout_constraintBottom_toTopOf="@+id/etLength"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etDate" />
 
         <EditText
             android:id="@+id/etLength"
             android:layout_width="234dp"
-            android:layout_height="43dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="57dp"
             android:ems="10"
             android:hint="Length..."
             android:inputType="textPersonName"
-            tools:layout_editor_absoluteX="89dp"
-            tools:layout_editor_absoluteY="385dp" />
+            app:layout_constraintBottom_toTopOf="@+id/btnAddCourse"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etProducer" />
 
         <Button
             android:id="@+id/btnAddCourse"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="23dp"
+            android:layout_marginBottom="198dp"
             android:text="Enter Course info"
-            tools:layout_editor_absoluteX="112dp"
-            tools:layout_editor_absoluteY="484dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/etLength"
+            app:layout_constraintTop_toBottomOf="@+id/etLength" />
+
+        <EditText
+            android:id="@+id/etDate"
+            android:layout_width="229dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="35dp"
+            android:ems="10"
+            android:hint="Date..."
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toTopOf="@+id/etProducer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etTitle" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

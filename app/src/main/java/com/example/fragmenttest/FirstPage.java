@@ -104,7 +104,7 @@ public class FirstPage extends Fragment {
             @Override
             public void onClick(View view) {
                 ft = getActivity().getSupportFragmentManager().beginTransaction();
-                ft.replace(R.id.FrameLayout,new SelectLevel());
+                ft.replace(R.id.FrameLayout,new FragmentAddCourse());
                 ft.commit();
             }
         }));
@@ -112,7 +112,7 @@ public class FirstPage extends Fragment {
             @Override
             public void onClick(View view) {
                 ft = getActivity().getSupportFragmentManager().beginTransaction();
-                ft.replace(R.id.FrameLayout,new SelectLevel());
+                ft.replace(R.id.FrameLayout,new FragmentAddCourse());
                 ft.commit();
             }
         }));
@@ -120,7 +120,7 @@ public class FirstPage extends Fragment {
             @Override
             public void onClick(View view) {
                 ft = getActivity().getSupportFragmentManager().beginTransaction();
-                ft.replace(R.id.FrameLayout,new SelectLevel());
+                ft.replace(R.id.FrameLayout,new FragmentAddCourse());
                 ft.commit();
             }
         }));
