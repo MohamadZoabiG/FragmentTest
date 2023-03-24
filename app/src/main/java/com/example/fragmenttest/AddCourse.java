@@ -1,5 +1,7 @@
 package com.example.fragmenttest;
 
+// TODO: change class name to Course, add more properties for course
+// TODO: add category enum
 public class AddCourse {
     private String title;
     private  String date;

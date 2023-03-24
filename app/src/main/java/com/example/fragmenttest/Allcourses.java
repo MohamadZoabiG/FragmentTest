@@ -86,7 +86,7 @@ public class Allcourses extends Fragment {
         recyclerView=getView().findViewById(R.id.recyclerView);
         db=FirebaseFirestore.getInstance();
         AddCoursearraylist=new ArrayList<AddCourse>();
-        myAdapter =new MyAdapter(allcourses,this.AddCoursearraylist);
+        myAdapter =new MyAdapter(allcourses,this.AddCoursearraylist); // TODO: flip parameters order
     }
     private void showallcourses() {
 

@@ -1,5 +1,6 @@
 package com.example.fragmenttest;
 
+// TODO: add properties like: name, address
 public class User {
     public String email,password;
     public User()
