@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -77,6 +78,8 @@ public class FragmentAddCourse extends Fragment {
     private EditText Title, Producer, Length, Date;
     private FirebaseServices fbs;
     private Button btnadd;
+    private FragmentTransaction ft;
+
 
     @Override
     public void onStart() {
@@ -96,6 +99,10 @@ public class FragmentAddCourse extends Fragment {
             public void onClick(View view) {
 
                 addtofirestore();
+
+                ft = getActivity().getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.FrameLayout,new AllCourses());
+                ft.commit();
             }
         });
 
@@ -113,7 +120,7 @@ public class FragmentAddCourse extends Fragment {
             Toast.makeText(getActivity(), "some data is missing", Toast.LENGTH_SHORT).show();
             return;
         } else {
-            AddCourse addcourse = new AddCourse(title, date, producer, length);
+            Course addcourse = new Course(title, date, producer, length);
             {
                 fbs.getFire().collection("Courses_").add(addcourse).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                             @Override
@@ -135,7 +142,10 @@ public class FragmentAddCourse extends Fragment {
                         });
 
 
+
             }
+
+
         }
     }
 }

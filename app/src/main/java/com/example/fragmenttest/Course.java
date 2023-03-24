@@ -2,16 +2,20 @@ package com.example.fragmenttest;
 
 // TODO: change class name to Course, add more properties for course
 // TODO: add category enum
-public class AddCourse {
+
+enum Category {English, Math, Physics, CS, Chemistry, Arabic, History};
+
+public class Course {
     private String title;
     private  String date;
     private String producer;
     private  String length;
+    private Category cat;
 
-    public AddCourse() {
+    public Course() {
     }
 
-    public AddCourse(String title, String date, String producer, String length) {
+    public Course(String title, String date, String producer, String length) {
         this.title = title;
         this.date = date;
         this.producer = producer;

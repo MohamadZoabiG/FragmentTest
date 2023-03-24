@@ -15,9 +15,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
 
     Context context;
-    ArrayList<AddCourse> courseArrayList;
+    ArrayList<Course> courseArrayList;
 
-    public MyAdapter(Context context, ArrayList<AddCourse> courseArrayList) {
+    public MyAdapter(Context context, ArrayList<Course> courseArrayList) {
         this.context = context;
         this.courseArrayList = courseArrayList;
     }
@@ -34,7 +34,7 @@ View v= LayoutInflater.from(context).inflate(R.layout.item,parent,false);
     @Override
     public void onBindViewHolder(@NonNull MyAdapter.MyViewHolder holder, int position) {
 
-        AddCourse addCourse = courseArrayList.get(position);
+        Course addCourse = courseArrayList.get(position);
         holder.title.setText(addCourse.getTitle());
         holder.date.setText(addCourse.getDate());
         holder.producer.setText(addCourse.getProducer());
