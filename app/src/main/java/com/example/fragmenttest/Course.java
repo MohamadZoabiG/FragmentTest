@@ -3,14 +3,14 @@ package com.example.fragmenttest;
 // TODO: change class name to Course, add more properties for course
 // TODO: add category enum
 
-enum Category {English, Math, Physics, CS, Chemistry, Arabic, History};
+//TODO: enum Category {English, Math, Physics, CS, Chemistry, Arabic, History};
 
 public class Course {
     private String title;
     private  String date;
     private String producer;
     private  String length;
-    private Category cat;
+    //TODO:private Category cat;
 
     public Course() {
     }
