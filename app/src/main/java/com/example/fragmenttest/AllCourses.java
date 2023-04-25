@@ -22,6 +22,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,7 +31,14 @@ import java.util.ArrayList;
  */
 public class AllCourses extends Fragment {
 
-//  TODO: Rename parameter arguments, choose names that match
+    private RecyclerView recyclerView;
+    ArrayList<Course> AddCoursearraylist;
+    MyAdapter myAdapter;
+    FirebaseFirestore fbs;
+    CoursesCallback courses;
+
+
+    //  TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -77,11 +85,6 @@ public class AllCourses extends Fragment {
         return inflater.inflate(R.layout.fragment_allcourses, container, false);
     }
 
-    private RecyclerView recyclerView;
-    ArrayList<Course> AddCoursearraylist;
-    MyAdapter myAdapter;
-    FirebaseFirestore fbs;
-
 
     @Override
     public void onStart() {
@@ -90,14 +93,20 @@ public class AllCourses extends Fragment {
 
     }
 
-
     private void connect() {
         recyclerView=getView().findViewById(R.id.recyclerView);
         fbs=FirebaseFirestore.getInstance();
-        showallcourses();
         AddCoursearraylist=new ArrayList<Course>();
-        myAdapter =new MyAdapter(getActivity(), AddCoursearraylist); // TODO: flip parameters order
+        courses = new CoursesCallback() {
+            @Override
+            public void onCallback(List<Course> courses) {
+                myAdapter = new MyAdapter(getActivity(), AddCoursearraylist);
+                recyclerView.setAdapter(myAdapter);
+            }
+        };
 
+        myAdapter = new MyAdapter(getActivity(), AddCoursearraylist);
+        showallcourses();
     }
     private void showallcourses() {
 
@@ -117,7 +126,9 @@ public class AllCourses extends Fragment {
 
                     }
 
-                    myAdapter.notifyDataSetChanged();
+                    courses.onCallback(AddCoursearraylist);
+                    //myAdapter = new MyAdapter(getActivity(), AddCoursearraylist);
+                    //myAdapter.notifyDataSetChanged();
                 }
 
             }
