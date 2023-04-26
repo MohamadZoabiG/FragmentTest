@@ -53,10 +53,10 @@ View v= LayoutInflater.from(context).inflate(R.layout.item,parent,false);
         TextView title,date,producer,length;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            title=itemView.findViewById(R.id.etTitle);
-            date=itemView.findViewById(R.id.etDate);
-            producer=itemView.findViewById(R.id.etProducer);
-            length=itemView.findViewById(R.id.etLength);
+            title=itemView.findViewById(R.id.addressshow);
+            date=itemView.findViewById(R.id.timeshow);
+            producer=itemView.findViewById(R.id.producershow);
+            length=itemView.findViewById(R.id.lengthshow);
 
         }
     }
