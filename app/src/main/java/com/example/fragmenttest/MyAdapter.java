@@ -17,7 +17,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     Context context;
     ArrayList<Course> courseArrayList;
 
-    public MyAdapter(Context context, ArrayList<Course> courseArrayList) {
+    public MyAdapter( ArrayList<Course> courseArrayList,Context context) {
         this.context = context;
         this.courseArrayList = courseArrayList;
     }
@@ -26,8 +26,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     @Override
     public MyAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-View v= LayoutInflater.from(context).inflate(R.layout.item,parent,false);
-
+        View v= LayoutInflater.from(context).inflate(R.layout.item,parent,false);
         return new MyViewHolder(v);
     }
 

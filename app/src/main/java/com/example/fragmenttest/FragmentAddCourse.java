@@ -100,9 +100,7 @@ public class FragmentAddCourse extends Fragment {
 
                 addtofirestore();
 
-                ft = getActivity().getSupportFragmentManager().beginTransaction();
-                ft.replace(R.id.FrameLayout,new AllCourses());
-                ft.commit();
+
             }
         });
 
@@ -127,8 +125,8 @@ public class FragmentAddCourse extends Fragment {
                             public void onSuccess(DocumentReference documentReference) {
                                 Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
                                 Toast.makeText(getActivity(), "Success!", Toast.LENGTH_SHORT).show();
-                                return;
-
+                                // TODO: goto show all courses
+                                gotoShowAllCourses();
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
@@ -136,8 +134,6 @@ public class FragmentAddCourse extends Fragment {
                             public void onFailure(@NonNull Exception e) {
                                 Log.e(TAG, "Error adding document", e);
                                 Toast.makeText(getActivity(), "Failure!", Toast.LENGTH_SHORT).show();
-                                return;
-
                             }
                         });
 
@@ -147,5 +143,12 @@ public class FragmentAddCourse extends Fragment {
 
 
         }
+    }
+
+    public void gotoShowAllCourses()
+    {
+        ft = getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayout,new AllCourses());
+        ft.commit();
     }
 }

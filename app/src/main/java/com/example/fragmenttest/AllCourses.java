@@ -2,7 +2,6 @@ package com.example.fragmenttest;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,13 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
@@ -31,7 +27,7 @@ import java.util.List;
  */
 public class AllCourses extends Fragment {
 
-    private RecyclerView recyclerView;
+    private RecyclerView rvCourses;
     ArrayList<Course> AddCoursearraylist;
     MyAdapter myAdapter;
     FirebaseFirestore fbs;
@@ -94,21 +90,22 @@ public class AllCourses extends Fragment {
     }
 
     private void connect() {
-        recyclerView=getView().findViewById(R.id.recyclerView);
+        rvCourses =getView().findViewById(R.id.rvCourses);
         fbs=FirebaseFirestore.getInstance();
         AddCoursearraylist=new ArrayList<Course>();
-        courses = new CoursesCallback() {
+        /*courses = new CoursesCallback() {
             @Override
             public void onCallback(List<Course> courses) {
                 myAdapter = new MyAdapter(getActivity(), AddCoursearraylist);
-                recyclerView.setAdapter(myAdapter);
+                rvCourses.setAdapter(myAdapter);
             }
         };
-
+*/
         myAdapter = new MyAdapter(getActivity(), AddCoursearraylist);
-        showallcourses();
+        showAllCourses();
     }
-    private void showallcourses() {
+
+    private void showAllCourses() {
 
         fbs.collection("Courses_").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
@@ -125,12 +122,10 @@ public class AllCourses extends Fragment {
                         AddCoursearraylist.add(dc.getDocument().toObject((Course.class)));
 
                     }
-
-                    courses.onCallback(AddCoursearraylist);
-                    //myAdapter = new MyAdapter(getActivity(), AddCoursearraylist);
-                    //myAdapter.notifyDataSetChanged();
                 }
-
+                myAdapter = new MyAdapter(getActivity(), AddCoursearraylist);
+                rvCourses.setAdapter(myAdapter);
+                //courses.onCallback(AddCoursearraylist);
             }
         });
 

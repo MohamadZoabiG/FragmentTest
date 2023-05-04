@@ -91,7 +91,10 @@ public class SignIn extends Fragment {
     public void onStart() {
         super.onStart();
         connect();
-
+        if (mAuth.getCurrentUser() != null)
+        {
+            gotoFirstPage();
+        }
     }
 
     private void connect() {
@@ -128,10 +131,7 @@ public class SignIn extends Fragment {
                                 if (task.isSuccessful())
                                 {
                                         Toast.makeText( getActivity(),"Login successful!", Toast.LENGTH_SHORT).show();
-                                         ft = getActivity().getSupportFragmentManager().beginTransaction();
-                                        ft.replace(R.id.FrameLayout,new FirstPage());
-                                        ft.commit();
-
+                                        gotoFirstPage();
                                 }
                                 else
                                 {
@@ -163,6 +163,12 @@ public class SignIn extends Fragment {
             }
         }));
 
+    }
+
+    private void gotoFirstPage() {
+        ft = getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayout,new FirstPage());
+        ft.commit();
     }
 
 
