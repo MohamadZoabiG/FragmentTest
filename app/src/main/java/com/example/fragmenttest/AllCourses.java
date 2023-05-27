@@ -93,14 +93,14 @@ public class AllCourses extends Fragment {
         rvCourses =getView().findViewById(R.id.rvCourses);
         fbs=FirebaseFirestore.getInstance();
         AddCoursearraylist=new ArrayList<Course>();
-        /*courses = new CoursesCallback() {
+        courses = new CoursesCallback() {
             @Override
             public void onCallback(List<Course> courses) {
                 myAdapter = new MyAdapter(getActivity(), AddCoursearraylist);
                 rvCourses.setAdapter(myAdapter);
             }
         };
-*/
+
         myAdapter = new MyAdapter(getActivity(), AddCoursearraylist);
         showAllCourses();
     }
